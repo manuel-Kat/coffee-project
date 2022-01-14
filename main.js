@@ -38,7 +38,7 @@ let coffees = [
 let filteredCoffees = coffees;
 
 function updateCoffees(e) {
-    // e.preventDefault(); // don't submit the form, we just want to update the data
+
     let selectedRoast = roastSelection.value;
     filteredCoffees = [];
     coffees.forEach(function (coffee) {
@@ -51,11 +51,14 @@ function updateCoffees(e) {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
-function addCoffee() {
+function addCoffee(e) {
+    e.preventDefault();
     let newRoast = document.querySelector('#createRoast');
     let newName = document.querySelector('#createName');
     let newId = coffees.length;
-    coffees.push();
+    let newCoffee= {name: newName.value,id: newId,roast: newRoast.value};
+    coffees.push(newCoffee);
+    updateCoffees();
 }
 
 let tbody = document.querySelector('#coffees');
@@ -64,7 +67,7 @@ let roastSelection = document.querySelector('#roast-selection');
 
 tbody.innerHTML = renderCoffees(coffees);
 
-submitButton.addEventListener('click', updateCoffees);
+submitButton.addEventListener('click', addCoffee);
 
 function Search() {
     let input, filter, a, i, txtValue, div;
