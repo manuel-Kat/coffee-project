@@ -1,8 +1,7 @@
 "use strict"
 
 function renderCoffee(coffee) {
-    let html = '<div class="coffee col-6 row">';
-    html +=  '<div class= "d-none">' + coffee.id + '</div>';
+    let html = '<div class="coffee col-6 row" id="' + coffee.id + '">';
     html +=  '<h5 class="col-auto">' + coffee.name + '</h5>';
     html +=  '<p class="col-auto p-0">' + coffee.roast + '</p>';
     html += '</div>';
@@ -55,3 +54,23 @@ let roastSelection = document.querySelector('#roast-selection');
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+
+function Search(){
+    let input, filter, a, i, txtValue, div;
+    input = document.getElementById('Search');
+    filter = input.value.toUpperCase();
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < coffees.length; i++) {
+        a = coffees[i].name;
+        txtValue = a;
+
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            div= document.getElementById(coffees[i].id);
+            div.style.display="";
+
+        } else {
+            div= document.getElementById(coffees[i].id);
+            div.style.display = "none";
+        }
+    }
+}
