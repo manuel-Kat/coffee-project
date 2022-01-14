@@ -15,3 +15,9 @@ select, input {
 hr {
     border: solid 1px grey;
 }
+
+.jumbotron {
+    background-image: url("assets/coffee-header.jpeg");
+    background-attachment: fixed;
+    height: 250px;
+}
