@@ -1,7 +1,7 @@
 "use strict"
 
 function renderCoffee(coffee) {
-    let html = '<div class="coffee col-6 row justify-content-between" id="' + coffee.id + '">';
+    let html = '<div class="coffee col-sm-6 row justify-content-between" id="' + coffee.id + '">';
     html += '<h4 class="col-auto p-0">' + coffee.name + '</h4>';
     html += '<p class="col-auto p-0">' + coffee.roast + '</p>';
     html += '</div>';

@@ -19,8 +19,8 @@
 </div>
 <hr>
 <div class="container row justify-content-between m-auto">
-    <div class="row col-6 justify-content-between" id="coffees"></div>
-    <div class="col-6 justify-content-center">
+    <div class="row col-md-6 justify-content-between order-12 order-md-1" id="coffees"></div>
+    <div class="col-md-6 justify-content-center order-1 order-md-12">
         <label for="roast-selection" class="text-left">Roast Selection</label>
         <select id="roast-selection" class="w-100" onchange="updateCoffees()">
             <option>all</option>
@@ -33,7 +33,7 @@
         <div class="w-100">
             <input type="text" id="Search" class="w-100" onkeyup="Search()" placeholder="Search by coffee name">
         </div>
-        <form>
+        <form class="mb-5">
             <div class="text-center">
                 <h2>Add a Coffee</h2>
             </div>
