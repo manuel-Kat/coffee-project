@@ -2,8 +2,8 @@
 
 function renderCoffee(coffee) {
     let html = '<div class="coffee col-6 row" id="' + coffee.id + '">';
-    html +=  '<h5 class="col-auto">' + coffee.name + '</h5>';
-    html +=  '<p class="col-auto p-0">' + coffee.roast + '</p>';
+    html += '<h5 class="col-auto">' + coffee.name + '</h5>';
+    html += '<p class="col-auto p-0">' + coffee.roast + '</p>';
     html += '</div>';
 
     return html;
@@ -11,18 +11,22 @@ function renderCoffee(coffee) {
 
 function renderCoffees(coffees) {
     let html = '';
-    for(let i = 0; i < coffees.length; i++) {
+    for (let i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
 }
 
+let filteredCoffees = [];
+
 function updateCoffees(e) {
     // e.preventDefault(); // don't submit the form, we just want to update the data
     let selectedRoast = roastSelection.value;
-    let filteredCoffees = [];
-    coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast) {
+    filteredCoffees = [];
+    coffees.forEach(function (coffee) {
+        if (selectedRoast === "all") {
+            filteredCoffees = coffees;
+        } else if (coffee.roast === selectedRoast) {
             filteredCoffees.push(coffee);
         }
     });
@@ -57,21 +61,36 @@ tbody.innerHTML = renderCoffees(coffees);
 // roastOption.addEventListener('click', updateCoffees);
 submitButton.addEventListener('click', updateCoffees);
 
-function Search(){
+function Search() {
     let input, filter, a, i, txtValue, div;
     input = document.getElementById('Search');
     filter = input.value.toUpperCase();
+    div = document.getElementsByClassName("coffee");
     // Loop through all list items, and hide those who don't match the search query
-    for (i = 0; i < coffees.length; i++) {
-        a = coffees[i].name;
+    if (filteredCoffees === []) {
+        for (i = 0; i < coffees.length; i++) {
+            a = coffees[i].name;
+            txtValue = a;
+
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                div = document.getElementById(coffees[i].id);
+                div.style.display = "";
+
+            } else {
+                div = document.getElementById(coffees[i].id);
+                div.style.display = "none";
+            }
+        }
+    } else for (i = 0; i < filteredCoffees.length; i++) {
+        a = filteredCoffees[i].name;
         txtValue = a;
 
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            div= document.getElementById(coffees[i].id);
-            div.style.display="";
+            div = document.getElementById(filteredCoffees[i].id);
+            div.style.display = "";
 
         } else {
-            div= document.getElementById(coffees[i].id);
+            div = document.getElementById(filteredCoffees[i].id);
             div.style.display = "none";
         }
     }
