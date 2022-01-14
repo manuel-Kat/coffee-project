@@ -19,33 +19,32 @@
 </div>
 
 <div class="container row justify-content-center m-auto">
-    <div class="row col-6 justify-content-between" id="coffees"> </div>
+    <div class="row col-6 justify-content-around" id="coffees"></div>
     <div class="col-6 justify-content-center text-center">
-<!--        <form>-->
-            <label for="roast-selection">Roast Selection</label>
-            <select id="roast-selection" class="w-100" onchange="updateCoffees()">
-                <option>light</option>
-                <option>medium</option>
-                <option>dark</option>
-                <option>all</option>
-            </select>
-            <div class="w-100"></div>
-            <label for="Search">Coffee Name</label>
-            <div class="w-100">
-                <input type="text" id="Search" class="w-100" onkeyup="Search()" placeholder="Search by coffees name">
-            </div>
+        <label for="roast-selection">Roast Selection</label>
+        <select id="roast-selection" class="w-100" onchange="updateCoffees()">
+            <option>light</option>
+            <option>medium</option>
+            <option>dark</option>
+            <option>all</option>
+        </select>
+        <div class="w-100"></div>
+        <label for="Search">Coffee Name</label>
+        <div class="w-100">
+            <input type="text" id="Search" class="w-100" onkeyup="Search()" placeholder="Search by coffees name">
+        </div>
         <form>
             <div><h2>Add a Coffee</h2></div>
-            <label>Roast</label>
-            <select id="createRoast">
+            <label for="createRoast">Roast</label>
+            <select id="createRoast" class="w-100">
                 <option>light</option>
                 <option>medium</option>
                 <option>dark</option>
             </select>
+            <label for="createName">Name</label>
             <input type="text" id="createName" class="w-100" placeholder="Input name of your coffee">
-            <input id="submit" type="submit">
+            <input id="submit" type="submit" class="w-100">
         </form>
-
     </div>
 </div>
 

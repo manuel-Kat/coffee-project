@@ -51,15 +51,20 @@ function updateCoffees(e) {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
+function addCoffee() {
+    let newRoast = document.querySelector('#createRoast');
+    let newName = document.querySelector('#createName');
+    let newId = coffees.length;
+    coffees.push();
+}
+
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
-// let roastOption = document.querySelector('.roastOption');
 
 tbody.innerHTML = renderCoffees(coffees);
 
-// roastOption.addEventListener('click', updateCoffees);
-// submitButton.addEventListener('click', updateCoffees);
+submitButton.addEventListener('click', updateCoffees);
 
 function Search() {
     let input, filter, a, i, txtValue, div;
