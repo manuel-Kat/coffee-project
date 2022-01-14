@@ -24,18 +24,28 @@
 <!--        <form>-->
             <label for="roast-selection">Roast Selection</label>
             <select id="roast-selection" class="w-100" onchange="updateCoffees()">
-                <option class="roastOption">light</option>
-                <option class="roastOption">medium</option>
-                <option class="roastOption">dark</option>
-                <option class="roastOption">all</option>
+                <option>light</option>
+                <option>medium</option>
+                <option>dark</option>
+                <option>all</option>
             </select>
             <div class="w-100"></div>
             <label for="Search">Coffee Name</label>
             <div class="w-100">
                 <input type="text" id="Search" class="w-100" onkeyup="Search()" placeholder="Search by coffees name">
             </div>
-<!--            <input id="submit" type="submit"/>-->
-<!--        </form>-->
+        <form>
+            <div><h2>Add a Coffee</h2></div>
+            <label>Roast</label>
+            <select id="createRoast">
+                <option>light</option>
+                <option>medium</option>
+                <option>dark</option>
+            </select>
+            <input type="text" id="createName" class="w-100" placeholder="Input name of your coffee">
+            <input id="submit" type="submit">
+        </form>
+
     </div>
 </div>
 
