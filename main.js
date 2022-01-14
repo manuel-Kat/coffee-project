@@ -17,22 +17,6 @@ function renderCoffees(coffees) {
     return html;
 }
 
-let filteredCoffees = [];
-
-function updateCoffees(e) {
-    // e.preventDefault(); // don't submit the form, we just want to update the data
-    let selectedRoast = roastSelection.value;
-    filteredCoffees = [];
-    coffees.forEach(function (coffee) {
-        if (selectedRoast === "all") {
-            filteredCoffees = coffees;
-        } else if (coffee.roast === selectedRoast) {
-            filteredCoffees.push(coffee);
-        }
-    });
-    tbody.innerHTML = renderCoffees(filteredCoffees);
-}
-
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 let coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
@@ -51,6 +35,22 @@ let coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+let filteredCoffees = coffees;
+
+function updateCoffees(e) {
+    // e.preventDefault(); // don't submit the form, we just want to update the data
+    let selectedRoast = roastSelection.value;
+    filteredCoffees = [];
+    coffees.forEach(function (coffee) {
+        if (selectedRoast === "all") {
+            filteredCoffees = coffees;
+        } else if (coffee.roast === selectedRoast) {
+            filteredCoffees.push(coffee);
+        }
+    });
+    tbody.innerHTML = renderCoffees(filteredCoffees);
+}
+
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
@@ -59,7 +59,7 @@ let roastSelection = document.querySelector('#roast-selection');
 tbody.innerHTML = renderCoffees(coffees);
 
 // roastOption.addEventListener('click', updateCoffees);
-submitButton.addEventListener('click', updateCoffees);
+// submitButton.addEventListener('click', updateCoffees);
 
 function Search() {
     let input, filter, a, i, txtValue, div;
@@ -67,31 +67,18 @@ function Search() {
     filter = input.value.toUpperCase();
     div = document.getElementsByClassName("coffee");
     // Loop through all list items, and hide those who don't match the search query
-    if (filteredCoffees === []) {
-        for (i = 0; i < coffees.length; i++) {
-            a = coffees[i].name;
+
+        for (i = 0; i < filteredCoffees.length; i++) {
+            a = filteredCoffees[i].name;
             txtValue = a;
 
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                div = document.getElementById(coffees[i].id);
+                div = document.getElementById(filteredCoffees[i].id);
                 div.style.display = "";
 
             } else {
-                div = document.getElementById(coffees[i].id);
+                div = document.getElementById(filteredCoffees[i].id);
                 div.style.display = "none";
             }
         }
-    } else for (i = 0; i < filteredCoffees.length; i++) {
-        a = filteredCoffees[i].name;
-        txtValue = a;
-
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            div = document.getElementById(filteredCoffees[i].id);
-            div.style.display = "";
-
-        } else {
-            div = document.getElementById(filteredCoffees[i].id);
-            div.style.display = "none";
-        }
     }
-}
