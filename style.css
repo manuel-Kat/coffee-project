@@ -26,3 +26,6 @@ hr {
     height: 250px;
     background-size: 100%;
 }
+.border-coffee{
+    background-color: #d5d5d5; /*i plan to put a background image i found for each div, maybe make it transparent to read.. */
+}
