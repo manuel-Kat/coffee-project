@@ -30,20 +30,20 @@ function renderCoffees(coffees) {
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 let coffees = [
-    {id: 1, name: 'Light City', roast: 'light', recommended: false, img: 'light_city'},
-    {id: 2, name: 'Half City', roast: 'light', recommended: false, img: 'half_city'},
-    {id: 3, name: 'Cinnamon', roast: 'light', recommended: false, img: 'cinnamon'},
-    {id: 4, name: 'City', roast: 'medium', recommended: false, img: 'city'},
-    {id: 5, name: 'American', roast: 'medium', recommended: false, img: 'american'},
-    {id: 6, name: 'Breakfast', roast: 'medium', recommended: false, img: 'breakfast'},
-    {id: 7, name: 'High', roast: 'dark', recommended: false, img: 'high'},
-    {id: 8, name: 'Continental', roast: 'dark', recommended: false, img: 'continental'},
-    {id: 9, name: 'New Orleans', roast: 'dark', recommended: false, img: 'new_orleans'},
-    {id: 10, name: 'European', roast: 'dark', recommended: false, img: 'european'},
-    {id: 11, name: 'Espresso', roast: 'dark', recommended: false, img: 'espresso'},
-    {id: 12, name: 'Viennese', roast: 'dark', recommended: false, img: 'viennese'},
-    {id: 13, name: 'Italian', roast: 'dark', recommended: false, img: 'italian'},
-    {id: 14, name: 'French', roast: 'dark', recommended: false, img: 'french'},
+    {id: 1, name: 'Light City', roast: 'light', recommended: false, img: 'light_city', description:'This roast is medium brown and really highlights the flavor of the beans, emphasizing their individual characteristics, unique aroma, complexity, and depth.'},
+    {id: 2, name: 'Half City', roast: 'light', recommended: false, img: 'half_city', description:'This roast has about the same flavor characteristics as a Light City Roast. It is a little darker, which decreases the above flavor qualities, but imparts a bit more body to the cup.'},
+    {id: 3, name: 'Cinnamon', roast: 'light', recommended: false, img: 'cinnamon', description:'This is the lightest drinkable roast. This roast results in toasted grain flavors with a sharp acidity to it.'},
+    {id: 4, name: 'City', roast: 'medium', recommended: false, img: 'city', description:'This roast imparts much more body than the Half City Roast and emphasizes bitter-sweet flavors. Oils can just barely be seen on the beans’ surface.'},
+    {id: 5, name: 'American', roast: 'medium', recommended: false, img: 'american', description:'American coffee is a type of coffee drink prepared by diluting an espresso with hot water, giving it a similar strength to, but different flavor from, traditionally brewed coffee.'},
+    {id: 6, name: 'Breakfast', roast: 'medium', recommended: false, img: 'breakfast', description:'Breakfast Blend coffee is perfect to wake you up and get ready to tackle the day ahead. A great blend of our favorite beans, roasted lightly to maintain flavor and caffeine! Whether hiking a mountain or navigating the morning commute, our Breakfast Blend coffee will help you reach your destination.'},
+    {id: 7, name: 'High', roast: 'dark', recommended: false, img: 'high', description:'This coffee is dark brown, even close to a blackened color. The beans are characterized by drawn-out oil that glosses the surface. Coffee made from a Dark Roast has a robust, full body. The flavors from the coffee’s country of origin are almost entirely roasted out, taking on a very bold and smoky taste'},
+    {id: 8, name: 'Continental', roast: 'dark', recommended: false, img: 'continental', description:'Continental is a blend of fully washed and sun-dried natural East African coffees that have been dark roasted to deliver a blend of coffee that is both typical and well loved in Europe.'},
+    {id: 9, name: 'New Orleans', roast: 'dark', recommended: false, img: 'new_orleans', description:'Typically brewed from dark roast coffee grounds and a secret ingredient: roasted chicory. The addition of chicory makes coffee sweeter than usual without taking anything away from the dark roast\'s rich depth.'},
+    {id: 10, name: 'European', roast: 'dark', recommended: false, img: 'european', description:'Most European espresso blends use low-acid coffee beans, and incorporate a small amount of high-quality Robusta coffees'},
+    {id: 11, name: 'Espresso', roast: 'dark', recommended: false, img: 'espresso', description:'This roast is a moderately dark roast, similar to a French Roast. The beans will have oils on their surface and the coffee will have much body, depth, and sweetness. At this point, you’re starting to taste the roast much more than the beans, but hey, who doesn’t like a nice, dark-roasted coffee?'},
+    {id: 12, name: 'Viennese', roast: 'dark', recommended: false, img: 'viennese', description:'The lightest of the dark roasts producing a full-bodied cup with a strong aroma. The depth and sweetness of the beans are very well-developed but the individual characteristics of the beans are starting to become weaker. Oils are more well-formed on the bean’s surface.'},
+    {id: 13, name: 'Italian', roast: 'dark', recommended: false, img: 'italian', description:'This roast is very dark with a thin body, and it is beginning to impart slightly burnt tones to the flavor. It is also a common roast for espresso blends.'},
+    {id: 14, name: 'French', roast: 'dark', recommended: false, img: 'french', description:'French roast is considered to be a double roast coffee. This is a category of dark roasted coffee characterized by an intense and smoky-sweet flavor, accompanied by a thin body and mouthfeel. Compared to lighter roasts, French roast coffee is far less acidic and roasted in flavor. It often has a charred, charcoal-like note.'},
 ];
 
 /*I also want to create a function that will create a special div to showcase 3 random coffees per reload!*/
@@ -51,13 +51,14 @@ let coffees = [
 /*better idea. make this the dont know? button. but i should set it to dont like our pick? try another! there as well,
  as random vid of "the coffee" */
 function ourRecommendation() {
-    let coffie, roast, img, recc;
+    let coffie, roast, img, recc, txt;
     coffie = document.getElementById("RecCoffee");
     roast = document.getElementById("RecRoast");
-    img = document.getElementById("RecImg")
+    txt = document.getElementById("RecText")
     recc = coffees.findIndex(({recommended}) => recommended === true)
     coffie.innerHTML = coffees[recc].name
     roast.innerHTML = coffees[recc].roast
+    txt.innerHTML = coffees[recc].description
     img.src = "./assets/" + coffees[recc].img + ".jpeg"
 }
 
