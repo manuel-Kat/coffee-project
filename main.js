@@ -2,10 +2,10 @@
 
 function renderCoffee(coffee) {
     let html = '<div class="coffee col-sm-6 align-items-center row coffee-card mb-2 p-1 " id="' + coffee.id + '">';
-    html += '<img  id="img' + coffee.id + '" src="http://placeholder.pics/svg/250x250" alt="#">';       /*will create a function to find this and customize the src remotely*/
+    html += '<img  id="img' + coffee.id + '" src="http://placeholder.pics/svg/250x250" alt="#" class="img-thumbnail m-auto">';       /*will create a function to find this and customize the src remotely*/
     html += '<div class="w-100"></div>';
-    html += '<h5 class="col-auto p-0">' + coffee.name + '</h5>';
-    html += '<p class=" col-auto p-0 m-0" style="color: darkgrey">' + coffee.roast + '</p>';
+    html += '<div class="d-flex d-nowrap mx-auto"><h5 class="col p-0 m-0">' + coffee.name + '</h5>';
+    html += '<p class=" col-auto p-1 m-0" style="color: darkgrey">' + coffee.roast + '</p></div>';
     html += '</div>';
     return html;
 
