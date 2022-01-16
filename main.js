@@ -2,13 +2,9 @@
 
 function renderCoffee(coffee) {
     let html = '<div class="coffee col-sm-6 align-items-center row mb-2 p-1 " id="' + coffee.id + '">';
-    html += '<img  id="img' + coffee.id + '" src="http://placeholder.pics/svg/250x250" alt="#" class="img-thumbnail m-auto">';       /*will create a function to find this and customize the src remotely*/
+    html += '<img  id="img' + coffee.id + '" src="./assets/' + coffee.img + '.jpeg" alt="#" class="img-thumbnail m-auto">';       /*will create a function to find this and customize the src remotely*/
     html += '<div class="w-100"></div>';
-    if(coffee.recommended === true) {
-        html += '<h5 class="fit text-nowrap mx-auto">This time we recommend:</h5>';
-
-    }
-
+    html += '<h5 class="fit text-nowrap mx-auto d-none">This time we recommend:</h5>';
     html += '<div class="textBox d-flex d-nowrap mx-auto"><h5 class="col p-0 m-0">' + coffee.name + '</h5>';
     html += '<p class=" col-auto p-1 m-0" style="color: darkgrey">' + coffee.roast + '</p></div>';
     html += '</div>';
@@ -34,46 +30,69 @@ function renderCoffees(coffees) {
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 let coffees = [
-    {id: 1, name: 'Light City', roast: 'light', recommended: false},
-    {id: 2, name: 'Half City', roast: 'light', recommended: false},
-    {id: 3, name: 'Cinnamon', roast: 'light', recommended: false},
-    {id: 4, name: 'City', roast: 'medium', recommended: false},
-    {id: 5, name: 'American', roast: 'medium', recommended: false},
-    {id: 6, name: 'Breakfast', roast: 'medium', recommended: false},
-    {id: 7, name: 'High', roast: 'dark', recommended: false},
-    {id: 8, name: 'Continental', roast: 'dark', recommended: false},
-    {id: 9, name: 'New Orleans', roast: 'dark', recommended: false},
-    {id: 10, name: 'European', roast: 'dark', recommended: false},
-    {id: 11, name: 'Espresso', roast: 'dark', recommended: false},
-    {id: 12, name: 'Viennese', roast: 'dark', recommended: false},
-    {id: 13, name: 'Italian', roast: 'dark', recommended: false},
-    {id: 14, name: 'French', roast: 'dark', recommended: false},
+    {id: 1, name: 'Light City', roast: 'light', recommended: false, img: 'light_city'},
+    {id: 2, name: 'Half City', roast: 'light', recommended: false, img: 'half_city'},
+    {id: 3, name: 'Cinnamon', roast: 'light', recommended: false, img: 'cinnamon'},
+    {id: 4, name: 'City', roast: 'medium', recommended: false, img: 'city'},
+    {id: 5, name: 'American', roast: 'medium', recommended: false, img: 'american'},
+    {id: 6, name: 'Breakfast', roast: 'medium', recommended: false, img: 'breakfast'},
+    {id: 7, name: 'High', roast: 'dark', recommended: false, img: 'high'},
+    {id: 8, name: 'Continental', roast: 'dark', recommended: false, img: 'continental'},
+    {id: 9, name: 'New Orleans', roast: 'dark', recommended: false, img: 'new_orleans'},
+    {id: 10, name: 'European', roast: 'dark', recommended: false, img: 'european'},
+    {id: 11, name: 'Espresso', roast: 'dark', recommended: false, img: 'espresso'},
+    {id: 12, name: 'Viennese', roast: 'dark', recommended: false, img: 'viennese'},
+    {id: 13, name: 'Italian', roast: 'dark', recommended: false, img: 'italian'},
+    {id: 14, name: 'French', roast: 'dark', recommended: false, img: 'french'},
 ];
 
 /*I also want to create a function that will create a special div to showcase 3 random coffees per reload!*/
+
 /*better idea. make this the dont know? button. but i should set it to dont like our pick? try another! there as well,
  as random vid of "the coffee" */
-function ourRecommendation(){
-    let coffie, roast, recc;
-    coffie= document.getElementById("RecCoffee");
-    roast=document.getElementById("RecRoast");
-    recc = coffees.find(({recommended}) => recommended===true)
-    coffie.innerHTML = recc.name
-    roast.innerHTML = recc.roast
+function ourRecommendation() {
+    let coffie, roast, img, recc;
+    coffie = document.getElementById("RecCoffee");
+    roast = document.getElementById("RecRoast");
+    img = document.getElementById("RecImg")
+    recc = coffees.findIndex(({recommended}) => recommended === true)
+    coffie.innerHTML = coffees[recc].name
+    roast.innerHTML = coffees[recc].roast
+    img.src = "./assets/" + coffees[recc].img + ".jpeg"
 }
 
 /*I want a new function to randomly select a coffee div and make it shiny, proclaiming it's the recommended coffee for this visit!*/
-function recommend() {
-    let cofy, i;                                    /*this version ignores DOM to maintain continuity on updates*/
-    cofy = Math.floor(Math.random() * 13);          /*gets a random id# for coffee, note: id#14 is at array #13*/
-    for(i=0;i<coffees.length;i++){              /*flips a switch to trigger hidden recommended feature*/
-        coffees[i].recommended = coffees[i] === coffees[cofy];
+function recommend(keep) {
+    let cofy, i, id, text;                                    /*this version ignores DOM to maintain continuity on updates*/
+
+    if (!keep) {                                        /*so i can decide where i want to keep the recs and where i want new ones*/
+        cofy = Math.floor(Math.random() * 13);
+    } else {                                                    /*gets a random id# for coffee, note: id#14 is at array #13*/
+        cofy = coffees.findIndex(({recommended}) => recommended === true)
     }
+
+    for (i = 0; i < filteredCoffees.length; i++) {              /*flips a switch to trigger hidden recommended property*/
+        id = document.getElementById(filteredCoffees[i].id);
+        text = id.getElementsByClassName("fit");
+        if (filteredCoffees[i].id === coffees[cofy].id) {
+            coffees[i].recommended = true;
+            filteredCoffees[i].recommended = true;
+            text[0].classList.remove("d-none")
+            if (!(id.classList.contains("recommend"))) {      /*to prevent infinite adding */
+                id.classList.add("recommend");
+            }
+        } else {
+            coffees[i].recommended = false;
+            filteredCoffees[i].recommended = false;
+            id.classList.remove("recommend");       /*doesnt matter; if remove cant find the target it ignores itself.*/
+            if (!(text[0].classList.contains("d-none"))) {      /*to prevent infinite adding */
+                text[0].classList.add("d-none");
+            }
+        }
+    }
+
     ourRecommendation();  /*to renew the html recommends too*/
 }
-
-recommend();
-
 
 
 let filteredCoffees = coffees;
@@ -91,25 +110,25 @@ function updateCoffees() {
         }
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
-
 }
+
 
 function addCoffee(e) {
     e.preventDefault();
     let newRoast = document.querySelector('#createRoast');
     let newName = document.querySelector('#createName');
     let newId = filteredCoffees.length + 1; /*actually needed a +1 cause list starts with array#0 & id#1.*/
-    let newCoffee = {id: newId, name: newName.value, roast: newRoast.value, recommended: false};
+    let newCoffee = {id: newId, name: newName.value, roast: newRoast.value, recommended: false, img: 'none'};
     coffees.push(newCoffee);
     updateCoffees();
+    recommend(true);
 }
 
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
-
-tbody.innerHTML = renderCoffees(filteredCoffees);
-
+updateCoffees();
+recommend();
 submitButton.addEventListener('click', addCoffee);
 
 function Search() {
@@ -132,8 +151,6 @@ function Search() {
         }
     }
 }
-
-
 
 
 /*
