@@ -20,7 +20,7 @@
     <!--</div>-->
 </div>
 <div class="container row justify-content-between m-auto">
-    <div class="row col-md-6 d-flex justify-content-center justify-content-sm-between order-12 order-md-1 m-auto" id="coffees"></div>
+    <div class="row col-md-6 d-flex justify-content-center justify-content-sm-between order-12 order-md-1 mx-auto" id="coffees"></div>
 
     <div class="col-md-6 justify-content-center order-1 order-md-12 pl-3">
         <label for="roast-selection" class="text-left">Roast Selection</label>
@@ -50,12 +50,12 @@
             <input id="submit" type="submit" class="w-100 btn btn-primary">
         </form>
         <div class="d-none d-md-block">
-            <div class="card w-100">
+            <div class="card w-100 bg-secondary">
                 <img src="http://placeholder.pics/svg/432x432" class="img-thumbnail card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <p class="btn btn-primary m-0">Don't like this coffee? try another!</p>
+                    <h5 class="card-title text-center">Recommended Coffee: <span id="RecCoffee">#</span> <span id="RecRoast">#</span></h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet. new element describe the coffee.</p>
+                    <p class="btn btn-primary m-0" onclick="recommend(); updateCoffees()">Don't like this coffee? try another!</p>
                 </div>
             </div>
         </div>
