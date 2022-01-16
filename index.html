@@ -16,11 +16,12 @@
 
 <div class="jumbotron jumbotron-fluid d-flex justify-content-center text-center align-items-center">
     <!--<div class="container container-fluid text-center align-items-stretch">-->
-        <h1>Coffee!</h1>
+    <h1>Coffee!</h1>
     <!--</div>-->
 </div>
-<div class="container row justify-content-between m-auto">
-    <div class="row col-md-6 d-flex justify-content-center justify-content-sm-between order-12 order-md-1 mx-auto" id="coffees"></div>
+<div class="container row m-auto">
+    <div class="row col-md-6 d-flex justify-content-center justify-content-sm-between order-12 order-md-1 mx-auto"
+         id="coffees"></div>
 
     <div class="col-md-6 justify-content-center order-1 order-md-12 pl-3">
         <label for="roast-selection" class="text-left">Roast Selection</label>
@@ -50,18 +51,20 @@
             <input id="submit" type="submit" class="w-100 btn btn-primary">
         </form>
         <div class="d-none d-md-block">
-            <div class="card w-100 bg-secondary">
-                <img src="http://placeholder.pics/svg/432x432" class="img-thumbnail card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Recommended Coffee: <span id="RecCoffee">#</span> <span id="RecRoast">#</span></h5>
-                    <p id=RecText class="card-text">Lorem ipsum dolor sit amet. new element describe the coffee.</p>
-                    <p class="btn btn-primary m-0 w-100" onclick="recommend(false)">Don't like this coffee? try another!</p>
+            <div class="card text-center w-100 coffee">
+                <video id="RecVid" src="#" class="embed-responsive-1by1" loop autoplay muted></video>
+                <div class="card-body" style="min-height: 10rem">    <!--need to move style to css and create media queries.-->
+                    <h5 class="card-title">Recommended Coffee: <span id="RecCoffee">#</span> <span
+                            id="RecRoast">#</span></h5>
+                    <p id=RecText class="card-text">describe the coffee.</p>
                 </div>
+                <div class="card-footer"><p class=" btn btn-primary w-100 justify-content-end"
+                                            onclick="recommend(false);  recommendedVideo();">Don't like this coffee? try another!</p></div>
             </div>
+
         </div>
     </div>
 </div>
-
 
 
 <script src="main.js"></script>

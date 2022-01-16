@@ -1,3 +1,9 @@
+body{
+    background-image: url("./assets/body-bg.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 h1 {
     color: white;
 }
@@ -23,21 +29,24 @@ hr {
 .jumbotron {
     background-image: url("assets/coffee-header.jpeg");
     background-attachment: fixed;
-    height: 250px;
+    background-repeat: no-repeat;
+    height: 200px;
+    width: 100%;
     background-size: 100%;
 }
 .coffee{
-    background-color: #d5d5d5; /*i plan to put a background image i found for each div, maybe make it transparent to read.. */
-    max-height: 20rem;                            /*also, using media queries with this class will make our coffees adapt to mobile and pc view correctly*/
+    background-color: #b7a7a7; /*i plan to put a background image i found for each div, maybe make it transparent to read.. */
+                               /*also, using media queries with this class will make our coffees adapt to mobile and pc view correctly*/
 }
-
+.coffee-bg{
+    height: 330px;
+}
 .recommend{
-    border: 2px yellow;
     background-color: #333333;
     color: #DDDDDD;
 }
 #RecRoast{
-color: darkgray;
+color: #695252;
     font-size: 1rem;
 }
 
@@ -46,7 +55,11 @@ color: darkgray;
 @media (min-width: 576px) {
 .fit{
     font-size: 1.5vw;
-}}
+}
+.jumbotron{
+    height: 250px;
+}
+}
 @media (min-width: 830px) and (max-width: 992px) {
     .fit{                       /*sucks.. but it looks wrong only at this query..*/
         font-size: 1.3vw;
