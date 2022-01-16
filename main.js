@@ -154,7 +154,7 @@ function ourRecommendation() {
     roast = document.getElementById("RecRoast");
     txt = document.getElementById("RecText")
     /*recc = coffees.findIndex(({recommended}) => recommended === true)*/
-    element= document.getElementsByClassName("recommend");
+    element= document.getElementsByClassName("recommend");      /*need to pull the recommended without using the DOM...*/
     recc= element[0].id-1
     coffie.innerHTML = coffees[recc].name
     roast.innerHTML = coffees[recc].roast
