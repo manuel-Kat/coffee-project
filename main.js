@@ -4,7 +4,7 @@ function renderCoffee(coffee) {
     let html = '<div class="coffee col-sm-6 align-items-center row coffee-card mb-2 p-1 " id="' + coffee.id + '">';
     html += '<img  id="img' + coffee.id + '" src="http://placeholder.pics/svg/250x250" alt="#" class="img-thumbnail m-auto">';       /*will create a function to find this and customize the src remotely*/
     html += '<div class="w-100"></div>';
-    html += '<h5 class="text-nowrap mx-auto d-none">This visit we recommend:</h5>';
+    html += '<h5 class="fit text-nowrap mx-auto d-none">This visit we recommend:</h5>';
     html += '<div class="textBox d-flex d-nowrap mx-auto"><h5 class="col p-0 m-0">' + coffee.name + '</h5>';
     html += '<p class=" col-auto p-1 m-0" style="color: darkgrey">' + coffee.roast + '</p></div>';
     html += '</div>';
@@ -110,11 +110,16 @@ function recommend() {
     text = div.getElementsByClassName("d-none");     /*I gave all divs a recommended text, I couldn't add it in between divs otherwise.*/
     text[0].classList.remove('d-none');                  /*so this removes its display none to reveal the specific coffee's text.*/
 }
-
-recommend();
+recommend(); /*success!! but maybe I should add a BOM like.. "don't know what to pick?" so it randomly selects then..*/
 
 
 /*I also want to create a function that will create a special div to showcase 3 random coffees per reload!*/
+/*better idea. make this the dont know? button. but i should set it to dont like our pick? try another! there as well,
+ as random vid of "the coffee" */
+
+
+
+
 
 /*
 function image(){

@@ -36,3 +36,15 @@ hr {
     background-color: #333333;
     color: #DDDDDD;
 }
+
+
+
+@media (min-width: 576px) {
+.fit{
+    font-size: 1.5vw;
+}}
+@media (min-width: 830px) and (max-width: 992px) {
+    .fit{                       /*sucks.. but it looks wrong only at this query..*/
+        font-size: 1.3vw;
+    }
+}
