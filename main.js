@@ -1,10 +1,10 @@
 "use strict"
 
 function renderCoffee(coffee) {
-    let html = '<div class="coffee col-sm-6 align-items-center row border border-coffee mb-2 p-1" id="' + coffee.id + '">';
-    html += '<img src="#" alt="#">';
+    let html = '<div class="coffee col-sm-6 align-items-center row coffee-card mb-2 p-1 " id="' + coffee.id + '">';
+    html += '<img  id="img' + coffee.id + '" src="http://placeholder.pics/svg/250x250" alt="#">';       /*will create a function to find this and customize the src remotely*/
     html += '<div class="w-100"></div>';
-    html += '<h4 class="col-auto p-0">' + coffee.name + '</h4>';
+    html += '<h5 class="col-auto p-0">' + coffee.name + '</h5>';
     html += '<p class=" col-auto p-0 m-0" style="color: darkgrey">' + coffee.roast + '</p>';
     html += '</div>';
     return html;
@@ -16,7 +16,7 @@ function renderCoffee(coffee) {
     html += '<div class="card-title row"> <h4 class="col-auto px-1">' + coffee.name + '</h4>';
     html += '<p class="col-auto p-0 m-0" style="color: darkgrey">' + coffee.roast+ '</p></div>';
     html +=  '<p class="card-text">' + '</p></div></div></div>'
-    return html; */
+    return html;                        card format. couldn't clean it as easily as divs so abandoned*/
 }
 
 function renderCoffees(coffees) {
@@ -75,7 +75,7 @@ let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
 
-tbody.innerHTML = renderCoffees(coffees);
+tbody.innerHTML = renderCoffees(filteredCoffees);
 
 submitButton.addEventListener('click', addCoffee);
 
@@ -83,7 +83,6 @@ function Search() {
     let input, filter, a, i, txtValue, div;
     input = document.getElementById('Search');
     filter = input.value.toUpperCase();
-    div = document.getElementsByClassName("coffee");
     // Loop through all list items, and hide those who don't match the search query
 
         for (i = 0; i < filteredCoffees.length; i++) {
@@ -100,3 +99,16 @@ function Search() {
             }
         }
     }
+/*
+function image(){
+    let i, id;
+
+    for(i=0; i<coffees.length;){
+    id= document.getElementById("img"+coffees[i].id);
+    id.src="./assets/"+coffees[i].id+".jpg"
+    id.alt = coffees[i].name
+        i++;
+    }
+}
+image();            doesnt need to be so difficult...
+*/

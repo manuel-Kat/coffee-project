@@ -26,6 +26,7 @@ hr {
     height: 250px;
     background-size: 100%;
 }
-.border-coffee{
+.coffee-card{
     background-color: #d5d5d5; /*i plan to put a background image i found for each div, maybe make it transparent to read.. */
+                                /*also, using media queries with this class will make our coffees adapt to mobile and pc view correctly*/
 }
