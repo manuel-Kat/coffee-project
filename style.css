@@ -17,19 +17,23 @@ h2 {
     margin-top: 1em;
     font-weight: bold;
     font-size: 2.5rem;
-}
-h5{
+    margin-bottom: 0;
+    background: -webkit-gradient(linear, left top, left 40, from(#71595a), color-stop(25%, #705b5b), to(#b7a7a7));
+}    /*P.S.: gradient blends with panel below smoothly when NOT in device simulation mode*/
+
+h5 {
     font-weight: bolder;
     font-size: 30px;
 }
 
-p.indent{
+p.indent {
     font-size: 18px;
     font-weight: bold;
     color: #695252
 }
-.padding-indent{
-    padding: 0 0 0 0.5rem;   /*slight poosh away from the edge is all thats needed.*/
+
+.padding-indent {
+    padding: 0 0 0 0.5rem; /*slight poosh away from the edge is all thats needed.*/
 }
 
 label {
@@ -59,19 +63,24 @@ hr {
     background-color: #b7a7a7;
 
 }
-.m-autoNotTop{
+
+.m-autoNotTop {
     margin: 0 auto auto auto;
 }
-.m-autoNotBottom{
+
+.m-autoNotBottom {
     margin: auto auto 0 auto;
 }
+
 .coffee-bg {
     max-height: 360px; /* using media queries with this class will make our coffees adapt to mobile and pc view correctly*/
 }
-.font5{
+
+.font5 {
     font-size: 30px;
     font-weight: bolder;
 }
+
 select, .textLocation {
     border: solid 1px #517B97;
     outline: 0;
@@ -92,15 +101,39 @@ select, .textLocation {
     font-size: 1rem;
 }
 
-@media (max-width: 576px) {
-    .coffee-bg{
+@media (max-width: 425px) {
+    h1 {
+        font-size: 6rem;
+    }
+    .jumbotron {
+        height: 100px;
+    }
+    .coffee-bg {
         width: 300px;
     }
-    .fit{
+
+    .fit {
         font-size: 25px;
         margin: auto;
     }
+
 }
+
+@media (min-width: 425px) {
+    .coffee-bg {
+        width: 300px;
+    }
+
+    .fit {
+        font-size: 25px;
+        margin: auto;
+    }
+
+    .jumbotron {
+        height: 150px;
+    }
+}
+
 @media (min-width: 576px) {
     .fit {
         font-size: 28px;
@@ -110,13 +143,15 @@ select, .textLocation {
         height: 250px;
     }
 }
-@media (min-width: 576px) {
-    .fit{
+
+@media (min-width: 768px) {
+    .fit {
         font-size: 20px;
     }
 }
+
 @media (min-width: 992px) {
-    .fit{
+    .fit {
         font-size: 28px;
     }
 }

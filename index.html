@@ -26,7 +26,7 @@
 <div class="container row m-auto">
     <div class="row col-md-6 d-flex justify-content-center justify-content-sm-between order-12 order-md-1 m-autoNotTop" id="coffees">
     </div>
-    <div class="col-md-6 justify-content-center order-1 order-md-12 pl-3">
+    <div class="col-md-6 justify-content-center order-1 order-md-12 pl-3 mb-5">
         <label for="roast-selection" class="w-100 coffee text-left padding-indent">Roast Selection</label>
 
         <select id="roast-selection" class="w-100 padding-indent" onchange="updateCoffees(); recommend(true);">
@@ -59,11 +59,11 @@
             <div class="card text-center w-100 coffee">
                 <video id="RecVid" src="#" class="embed-responsive-1by1" loop autoplay muted></video>
                 <div class="card-body" style="min-height: 10rem">    <!--need to move style to css and create media queries.-->
-                    <h5 class="card-title font5">Recommended Coffee: <span id="RecCoffee">#</span> <span
-                            id="RecRoast">#</span></h5>
+                    <h5 class="card-title font5">Recommended Coffee: </h5><span id="RecCoffee">#</span> <span
+                            id="RecRoast">#</span>
                     <p id=RecText class="card-text">describe the coffee.</p>
                 </div>
-                <div class="card-footer"><p class=" btn btn-warning font5 w-100 justify-content-end"
+                <div class="card-footer p-0"><p class=" btn btn-warning font5 w-100 justify-content-end m-0"
                                             onclick="recommend(false);  recommendedVideo();">Don't like this coffee? try another!</p></div>
             </div>
 
