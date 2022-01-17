@@ -56,12 +56,14 @@
             <input id="submit" type="submit" class="w-100 btn btn-warning font5 pt-0 mt-2">
         </form>
         <div class="d-none d-md-block">
-            <div class="card text-center w-100 coffee">
+            <div class="card w-100 coffee">
                 <video id="RecVid" src="#" class="embed-responsive-1by1" loop autoplay muted></video>
-                <div class="card-body" style="min-height: 10rem">    <!--need to move style to css and create media queries.-->
-                    <h5 class="card-title font5">Recommended Coffee: </h5><span id="RecCoffee">#</span> <span
-                            id="RecRoast">#</span>
-                    <p id=RecText class="card-text">describe the coffee.</p>
+                <div class="card-body text-center" style="min-height: 10rem">    <!--need to move style to css and create media queries.-->
+                    <h5 class="card-title font5">Recommended Coffee: </h5>
+                    <div class="d-flex px-2 d-nowrap mx-auto">
+                    <p id="RecCoffee" class="font5 p-0 ml-auto">#</p> <p id="RecRoast" class=" indent p-0 mr-auto">#</p>
+                    </div>
+                        <p id=RecText class="card-text">describe the coffee.</p>
                 </div>
                 <div class="card-footer p-0"><p class=" btn btn-warning font5 w-100 justify-content-end m-0"
                                             onclick="recommend(false);  recommendedVideo();">Don't like this coffee? try another!</p></div>
@@ -71,6 +73,7 @@
     </div>
 </div>
 
+<button id="topBtn">back to top</button>
 
 <script src="main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"

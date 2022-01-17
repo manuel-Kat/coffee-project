@@ -6,6 +6,11 @@ body {
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
 }
+#topBtn{
+    position: fixed;
+    bottom:20px;
+    right:30px;
+}
 
 h1 {
     font-weight: bold;

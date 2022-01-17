@@ -270,6 +270,25 @@ function recommendedVideo() {
 
 recommendedVideo();
 
+
+function screenTop() {          /*scroll function*/
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+let buttonTop = document.getElementById("topBtn")
+buttonTop.addEventListener('click',screenTop);
+
+function scrollFunction() {
+    if (document.body.scrollTop > 220 || document.documentElement.scrollTop > 220) {
+        buttonTop.style.display = "block";
+    } else {
+        buttonTop.style.display = "none";
+    }
+}
+
+window.onscroll = function() {scrollFunction()};
+
 /*
 
 function image(){
