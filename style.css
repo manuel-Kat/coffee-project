@@ -1,16 +1,28 @@
-body{
+body {
     background-image: url("./assets/body-bg.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
 }
 
 h1 {
+    font-weight: bold;
     color: white;
 }
 
 h2 {
     margin-top: 1em;
+}
+h5{
+    font-weight: bolder;
+    font-size: 30px;
+}
+p.indent{
+    font-size: 18px;
+    font-weight: bold;
+    color: #695252
 }
 
 label {
@@ -35,48 +47,63 @@ hr {
     width: 100%;
     background-size: 100%;
 }
-.coffee{
-    background-color: #b7a7a7; /*i plan to put a background image i found for each div, maybe make it transparent to read.. */
-                               /*also, using media queries with this class will make our coffees adapt to mobile and pc view correctly*/
+
+.coffee {
+    background-color: #b7a7a7;
+
 }
-.coffee-bg{
-    height: 330px;
+.m-autoNotTop{
+    margin: 0 auto auto auto;
 }
-select, .textLocation{
+.coffee-bg {
+    max-height: 360px; /* using media queries with this class will make our coffees adapt to mobile and pc view correctly*/
+}
+
+select, .textLocation {
     border: solid 1px #517B97;
     outline: 0;
     background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #CAD9E3), to(#FFFFFF));
     background: -moz-linear-gradient(top, #FFFFFF, #CAD9E3 1px, #FFFFFF 25px);
-    box-shadow: rgba(0,0,0, 0.1) 0 0 8px;
-    -moz-box-shadow: rgba(0,0,0, 0.1) 0 0 8px;
-    -webkit-box-shadow: rgba(0,0,0, 0.1) 0 0 8px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 8px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 0 8px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 0 8px;
 }
 
-.recommend{
+.recommend {
     background-color: #333333;
     color: #DDDDDD;
 }
-#RecRoast{
-color: #695252;
+
+#RecRoast {
+    color: #695252;
     font-size: 1rem;
 }
 
-
-@media (min-width: 576px) {
-.fit{
-    font-size: 1.5vw;
-}
-.jumbotron{
-    height: 250px;
-}
-}
-@media (min-width: 830px) and (max-width: 992px) {
-    .fit{                       /*sucks.. but it looks wrong only at this query..*/
-        font-size: 1.3vw;
+@media (max-width: 576px) {
+    .coffee-bg{
+        width: 300px;
+    }
+    .fit{
+        font-size: 25px;
+        margin: auto;
     }
 }
-@media (min-width: 1470px) {
+@media (min-width: 576px) {
+    .fit {
+        font-size: 28px;
+    }
+
+    .jumbotron {
+        height: 250px;
+    }
+}
+@media (min-width: 576px) {
     .fit{
-        font-size: 22px;
+        font-size: 20px;
+    }
+}
+@media (min-width: 992px) {
+    .fit{
+        font-size: 28px;
     }
 }

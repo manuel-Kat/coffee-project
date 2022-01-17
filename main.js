@@ -5,8 +5,8 @@ function renderCoffee(coffee) {
     html += '<img  id="img' + coffee.id + '" src="./assets/' + coffee.img + '.jpeg" alt="#" class="img-thumbnail m-auto">';       /*will create a function to find this and customize the src remotely*/
     html += '<div class="w-100"></div>';
     html += '<h5 class="fit text-nowrap mx-auto d-none">This time we recommend:</h5>';
-    html += '<div class="textBox d-flex d-nowrap mx-auto"><h5 class="col p-0 m-0">' + coffee.name + '</h5>';
-    html += '<p class=" col-auto p-1 m-0" style="color: #695252">' + coffee.roast + '</p></div>';
+    html += '<div class="textBox d-flex px-2 d-nowrap mx-auto"><h5 class="col p-0 m-0">' + coffee.name + '</h5>';
+    html += '<p class=" col-auto p-0 m-0 indent">' + coffee.roast + '</p></div>';
     html += '</div>';
     return html;
 
@@ -176,7 +176,7 @@ function recommend(keep) {
         text = id.getElementsByClassName("fit");
         if (filteredCoffees[i].id === coffees[cofy].id) {
             coffees[(filteredCoffees[i].id-1)].recommended = true;   /*looks bad. but makes sure i pull the id of the filtered. then get*/
-            /* coffees[i].recommended = true; */                /*the legit array#, not the "i" loop's instance of the match*/
+            /* coffees[i].recommended = true; */                    /*the legit array#, not the "i" loop's instance of the match*/
             text[0].classList.remove("d-none")
             if (!(id.classList.contains("recommend"))) {      /*to prevent infinite adding */
                 id.classList.add("recommend");
@@ -269,10 +269,6 @@ function recommendedVideo() {
 }
 
 recommendedVideo();
-function onChange(boolean) {
-    updateCoffees();
-    recommend(boolean);
-}
 
 /*
 
