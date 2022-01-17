@@ -10,19 +10,26 @@ body {
 h1 {
     font-weight: bold;
     color: white;
+    font-size: 8rem;
 }
 
 h2 {
     margin-top: 1em;
+    font-weight: bold;
+    font-size: 2.5rem;
 }
 h5{
     font-weight: bolder;
     font-size: 30px;
 }
+
 p.indent{
     font-size: 18px;
     font-weight: bold;
     color: #695252
+}
+.padding-indent{
+    padding: 0 0 0 0.5rem;   /*slight poosh away from the edge is all thats needed.*/
 }
 
 label {
@@ -31,7 +38,7 @@ label {
 }
 
 select, input {
-    height: 38px;
+    height: 50px;
     margin-bottom: .5em;
 }
 
@@ -55,10 +62,16 @@ hr {
 .m-autoNotTop{
     margin: 0 auto auto auto;
 }
+.m-autoNotBottom{
+    margin: auto auto 0 auto;
+}
 .coffee-bg {
     max-height: 360px; /* using media queries with this class will make our coffees adapt to mobile and pc view correctly*/
 }
-
+.font5{
+    font-size: 30px;
+    font-weight: bolder;
+}
 select, .textLocation {
     border: solid 1px #517B97;
     outline: 0;

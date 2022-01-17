@@ -4,7 +4,7 @@ function renderCoffee(coffee) {
     let html = '<div class="coffee col-sm-6 align-items-center coffee-bg row mb-2 p-1 " id="' + coffee.id + '">';
     html += '<img  id="img' + coffee.id + '" src="./assets/' + coffee.img + '.jpeg" alt="#" class="img-thumbnail m-auto">';       /*will create a function to find this and customize the src remotely*/
     html += '<div class="w-100"></div>';
-    html += '<h5 class="fit text-nowrap mx-auto d-none">This time we recommend:</h5>';
+    html += '<p class="fit text-nowrap m-autoNotBottom d-none font5">This time we recommend:</p>';
     html += '<div class="textBox d-flex px-2 d-nowrap mx-auto"><h5 class="col p-0 m-0">' + coffee.name + '</h5>';
     html += '<p class=" col-auto p-0 m-0 indent">' + coffee.roast + '</p></div>';
     html += '</div>';

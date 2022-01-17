@@ -27,9 +27,9 @@
     <div class="row col-md-6 d-flex justify-content-center justify-content-sm-between order-12 order-md-1 m-autoNotTop" id="coffees">
     </div>
     <div class="col-md-6 justify-content-center order-1 order-md-12 pl-3">
-        <label for="roast-selection" class="w-100 coffee text-left pl-2">Roast Selection</label>
+        <label for="roast-selection" class="w-100 coffee text-left padding-indent">Roast Selection</label>
 
-        <select id="roast-selection" class="w-100" onchange="updateCoffees(); recommend(true);">
+        <select id="roast-selection" class="w-100 padding-indent" onchange="updateCoffees(); recommend(true);">
             <option>all</option>
             <option>light</option>
             <option>medium</option>
@@ -37,33 +37,33 @@
         </select>
 
         <div class="w-100"></div>
-        <label for="Search" class="w-100 text-left coffee pl-2">Coffee Name</label>
+        <label for="Search" class="w-100 text-left coffee padding-indent">Coffee Name</label>
         <div class="w-100">
-            <input type="text" id="Search" class="textLocation w-100" onkeyup="Search()" placeholder="Search by coffee name">
+            <input type="text" id="Search" class="textLocation w-100 padding-indent m-0" onkeyup="Search()" placeholder="Search by coffee name">
         </div>
-        <form class="mb-5">
+        <form class="mb-4">
             <div class="text-center">
                 <h2>Add a Coffee</h2>
             </div>
-            <label for="createRoast" class="w-100 text-left coffee pl-2">Roast</label>
-            <select id="createRoast" class="w-100 pl-2">
+            <label for="createRoast" class="w-100 text-left coffee padding-indent">Roast</label>
+            <select id="createRoast" class="w-100 padding-indent">
                 <option>light</option>
                 <option>medium</option>
                 <option>dark</option>
             </select>
-            <label for="createName" class="w-100 text-left coffee pl-2 mb-0">Name</label>
-            <input type="text" id="createName" class="textLocation w-100 pl-2 mt-0" placeholder="Input name of your coffee">
-            <input id="submit" type="submit" class="w-100 btn btn-warning">
+            <label for="createName" class="w-100 text-left coffee padding-indent">Name</label>
+            <input type="text" id="createName" class="textLocation w-100 padding-indent m-0" placeholder="Input name of your coffee">
+            <input id="submit" type="submit" class="w-100 btn btn-warning font5 pt-0 mt-2">
         </form>
         <div class="d-none d-md-block">
             <div class="card text-center w-100 coffee">
                 <video id="RecVid" src="#" class="embed-responsive-1by1" loop autoplay muted></video>
                 <div class="card-body" style="min-height: 10rem">    <!--need to move style to css and create media queries.-->
-                    <h5 class="card-title">Recommended Coffee: <span id="RecCoffee">#</span> <span
+                    <h5 class="card-title font5">Recommended Coffee: <span id="RecCoffee">#</span> <span
                             id="RecRoast">#</span></h5>
                     <p id=RecText class="card-text">describe the coffee.</p>
                 </div>
-                <div class="card-footer"><p class=" btn btn-warning w-100 justify-content-end"
+                <div class="card-footer"><p class=" btn btn-warning font5 w-100 justify-content-end"
                                             onclick="recommend(false);  recommendedVideo();">Don't like this coffee? try another!</p></div>
             </div>
 
