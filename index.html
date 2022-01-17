@@ -24,30 +24,32 @@
          id="coffees"></div>
 
     <div class="col-md-6 justify-content-center order-1 order-md-12 pl-3">
-        <label for="roast-selection" class="text-left">Roast Selection</label>
-        <select id="roast-selection" class="w-100" onchange="updateCoffees(); recommend(true)">
+        <label for="roast-selection" class="w-100 coffee text-left">Roast Selection</label>
+
+        <select id="roast-selection" class="w-100" onchange="onChange(true)">
             <option>all</option>
             <option>light</option>
             <option>medium</option>
             <option>dark</option>
         </select>
+
         <div class="w-100"></div>
-        <label for="Search" class="text-left">Coffee Name</label>
+        <label for="Search" class="w-100 text-left coffee">Coffee Name</label>
         <div class="w-100">
-            <input type="text" id="Search" class="w-100" onkeyup="Search()" placeholder="Search by coffee name">
+            <input type="text" id="Search" class="textLocation w-100" onkeyup="Search()" placeholder="Search by coffee name">
         </div>
         <form class="mb-5">
             <div class="text-center">
                 <h2>Add a Coffee</h2>
             </div>
-            <label for="createRoast" class="text-left">Roast</label>
+            <label for="createRoast" class="w-100 text-left coffee">Roast</label>
             <select id="createRoast" class="w-100">
                 <option>light</option>
                 <option>medium</option>
                 <option>dark</option>
             </select>
-            <label for="createName" class="text-left">Name</label>
-            <input type="text" id="createName" class="w-100" placeholder="Input name of your coffee">
+            <label for="createName" class="w-100 text-left coffee">Name</label>
+            <input type="text" id="createName" class="textLocation w-100" placeholder="Input name of your coffee">
             <input id="submit" type="submit" class="w-100 btn btn-primary">
         </form>
         <div class="d-none d-md-block">

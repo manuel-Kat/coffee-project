@@ -153,9 +153,9 @@ function ourRecommendation() {
     coffie = document.getElementById("RecCoffee");
     roast = document.getElementById("RecRoast");
     txt = document.getElementById("RecText")
-    /*recc = coffees.findIndex(({recommended}) => recommended === true)*/
-    element= document.getElementsByClassName("recommend");      /*need to pull the recommended without using the DOM...*/
-    recc= element[0].id-1
+    recc = coffees.findIndex(({recommended}) => recommended === true)
+    /*element= document.getElementsByClassName("recommend");      /!*need to pull the recommended without using the DOM...*!/
+    recc= element[0].id-1*/
     coffie.innerHTML = coffees[recc].name
     roast.innerHTML = coffees[recc].roast
     txt.innerHTML = coffees[recc].description
@@ -175,8 +175,8 @@ function recommend(keep) {
         id = document.getElementById(filteredCoffees[i].id);
         text = id.getElementsByClassName("fit");
         if (filteredCoffees[i].id === coffees[cofy].id) {
-            coffees[i].recommended = true;
-            /*filteredCoffees[i].recommended = true;*/
+            coffees[(filteredCoffees[i].id-1)].recommended = true;   /*looks bad. but makes sure i pull the id of the filtered. then get*/
+            /* coffees[i].recommended = true; */                /*the legit array#, not the "i" loop's instance of the match*/
             text[0].classList.remove("d-none")
             if (!(id.classList.contains("recommend"))) {      /*to prevent infinite adding */
                 id.classList.add("recommend");
@@ -269,7 +269,13 @@ function recommendedVideo() {
 }
 
 recommendedVideo();
+function onChange(boolean) {
+    updateCoffees();
+    recommend(boolean);
+}
+
 /*
+
 function image(){
     let i, id;
 
