@@ -1,7 +1,7 @@
 body {
     background-image: url("./assets/coffee-bg.jpg");
-    background-attachment: scroll;
-    background-size: cover ;
+    background-attachment: fixed;
+    background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Amatic SC', cursive;
     font-size: 30px;
