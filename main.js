@@ -162,35 +162,37 @@ function ourRecommendation() {
 
 /*I want a new function to randomly select a coffee div and make it shiny, proclaiming it's the recommended coffee for this visit!*/
 function recommend(keep) {
-    let cofy, i, id, text;                                    /*this version ignores DOM to maintain continuity on updates*/
+    let cofy, i;                                    /*this version ignores DOM to maintain continuity on updates*/
 
     if (!keep) {                                        /*so i can decide where i want to keep the recs and where i want new ones*/
         cofy = Math.floor(Math.random() * coffees.length);
     } else {                                                    /*gets a random id# for coffee, note: id#14 is at array #13*/
         cofy = coffees.findIndex(({recommended}) => recommended === true)
     }
+    for (i = 0; i < coffees.length; i++) {
+        coffees[i].recommended = coffees[i] === coffees[cofy];
+    }
+    isOnScreen(cofy);
+    ourRecommendation();  /*to renew the html recommends too*/
+}
 
+function isOnScreen(cofy) {
+    let text, id, i;
     for (i = 0; i < filteredCoffees.length; i++) {              /*flips a switch to trigger hidden recommended property*/
         id = document.getElementById(filteredCoffees[i].id);
         text = id.getElementsByClassName("fit");
         if (filteredCoffees[i].id === coffees[cofy].id) {
-            coffees[(filteredCoffees[i].id - 1)].recommended = true;   /*looks bad. but makes sure i pull the id of the filtered. then get*/
-            /* coffees[i].recommended = true; */                    /*the legit array#, not the "i" loop's instance of the match*/
             text[0].classList.remove("d-none")
             if (!(id.classList.contains("recommend"))) {      /*to prevent infinite adding */
                 id.classList.add("recommend");
             }
         } else {
-            coffees[i].recommended = false;
-            /*filteredCoffees[i].recommended = false;*/
             id.classList.remove("recommend");       /*doesnt matter; if remove cant find the target it ignores itself.*/
             if (!(text[0].classList.contains("d-none"))) {      /*to prevent infinite adding */
                 text[0].classList.add("d-none");
             }
         }
     }
-
-    ourRecommendation();  /*to renew the html recommends too*/
 }
 
 let filteredCoffees = coffees;
@@ -304,9 +306,9 @@ window.onscroll = function () {
 function removeStorage() {
     let savCoffes, i;
     savCoffes = JSON.parse(localStorage.getItem("savedCoffees"));
-    if(savCoffes !== null){                                     /*checks if local is empty before it tries to pull .length from null*/
+    if (savCoffes !== null) {                                     /*checks if local is empty before it tries to pull .length from null*/
         for (i = 0; i < savCoffes.length; i++) {
-        coffees.pop();
+            coffees.pop();
         }
     }
 
