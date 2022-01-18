@@ -149,13 +149,12 @@ let coffees = [
 /*better idea. make this the dont know? button. but i should set it to dont like our pick? try another! there as well,
  as random vid of "the coffee" */
 function ourRecommendation() {
-    let coffie, roast, recc, txt, element;
+    let coffie, roast, recc, txt;
     coffie = document.getElementById("RecCoffee");
     roast = document.getElementById("RecRoast");
     txt = document.getElementById("RecText")
     recc = coffees.findIndex(({recommended}) => recommended === true)
-    /*element= document.getElementsByClassName("recommend");      /!*need to pull the recommended without using the DOM...*!/
-    recc= element[0].id-1*/
+
     coffie.innerHTML = coffees[recc].name
     roast.innerHTML = coffees[recc].roast
     txt.innerHTML = coffees[recc].description
@@ -166,7 +165,7 @@ function recommend(keep) {
     let cofy, i, id, text;                                    /*this version ignores DOM to maintain continuity on updates*/
 
     if (!keep) {                                        /*so i can decide where i want to keep the recs and where i want new ones*/
-        cofy = Math.floor(Math.random() * 13);
+        cofy = Math.floor(Math.random() * coffees.length);
     } else {                                                    /*gets a random id# for coffee, note: id#14 is at array #13*/
         cofy = coffees.findIndex(({recommended}) => recommended === true)
     }
@@ -194,7 +193,6 @@ function recommend(keep) {
     ourRecommendation();  /*to renew the html recommends too*/
 }
 
-
 let filteredCoffees = coffees;
 
 function updateCoffees() {
@@ -212,24 +210,24 @@ function updateCoffees() {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
-
 function addCoffee(e) {
     e.preventDefault();
-    let newRoast = document.querySelector('#createRoast');
-    let newName = document.querySelector('#createName');
-    let newId = filteredCoffees.length + 1; /*actually needed a +1 cause list starts with array#0 & id#1.*/
-    let newCoffee = {
-        id: newId,
-        name: newName.value,
-        roast: newRoast.value,
-        recommended: false,
-        img: 'none',
-        description: 'this is your custom coffee! if you see this you are very lucky!!'
-    };
-    coffees.push(newCoffee);
+    let newRoast, newName, newId, newCoffee;
+    newRoast = document.querySelector('#createRoast');
+    newName = document.querySelector('#createName');
+    newId = coffees.length + 1; /*actually needed a +1 cause list starts with array#0 & id#1.*/
+    newCoffee = {id: newId, name: newName.value, roast: newRoast.value, recommended: false, img: 'none',description: 'this is your custom coffee! Thank you for your contribution!!'};
+   coffees.push(newCoffee);
+
+    /* localStorage.setItem("save_coffees",JSON.stringify([newCoffee]));
+    let retrievedCoffees =localStorage.getItem("save_coffees");
+    let newCoffees= JSON.parse(retrievedCoffees);            /!*local storage retrieval*!/
+    coffees.push(newCoffees);*/
+
     updateCoffees();
     recommend(true);
 }
+
 
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
@@ -289,6 +287,11 @@ function scrollFunction() {
 
 window.onscroll = function() {scrollFunction()};
 
+
+function clear(){
+    localStorage.clear();
+    updateCoffees();
+}
 /*
 
 function image(){
