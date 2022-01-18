@@ -174,7 +174,7 @@ function recommend(keep) {
         id = document.getElementById(filteredCoffees[i].id);
         text = id.getElementsByClassName("fit");
         if (filteredCoffees[i].id === coffees[cofy].id) {
-            coffees[(filteredCoffees[i].id-1)].recommended = true;   /*looks bad. but makes sure i pull the id of the filtered. then get*/
+            coffees[(filteredCoffees[i].id - 1)].recommended = true;   /*looks bad. but makes sure i pull the id of the filtered. then get*/
             /* coffees[i].recommended = true; */                    /*the legit array#, not the "i" loop's instance of the match*/
             text[0].classList.remove("d-none")
             if (!(id.classList.contains("recommend"))) {      /*to prevent infinite adding */
@@ -210,24 +210,36 @@ function updateCoffees() {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
+let saveCoffee = []
+
 function addCoffee(e) {
     e.preventDefault();
     let newRoast, newName, newId, newCoffee;
     newRoast = document.querySelector('#createRoast');
     newName = document.querySelector('#createName');
     newId = coffees.length + 1; /*actually needed a +1 cause list starts with array#0 & id#1.*/
-    newCoffee = {id: newId, name: newName.value, roast: newRoast.value, recommended: false, img: 'none',description: 'this is your custom coffee! Thank you for your contribution!!'};
-   coffees.push(newCoffee);
-
-    /* localStorage.setItem("save_coffees",JSON.stringify([newCoffee]));
-    let retrievedCoffees =localStorage.getItem("save_coffees");
-    let newCoffees= JSON.parse(retrievedCoffees);            /!*local storage retrieval*!/
-    coffees.push(newCoffees);*/
-
+    newCoffee = {
+        id: newId,
+        name: newName.value,
+        roast: newRoast.value,
+        recommended: false,
+        img: 'none',
+        description: 'this is your custom coffee! Thank you for your contribution!!'
+    };
+    saveCoffee.push(newCoffee);
+    coffees.push(newCoffee);
+    localStorage.setItem("savedCoffees", JSON.stringify(saveCoffee))
     updateCoffees();
     recommend(true);
 }
 
+/* this grabs the local storage(if any!) and posts it to the coffee list*/
+if (localStorage.getItem("savedCoffees")) {
+    let newCoffees = JSON.parse(localStorage.getItem("savedCoffees"))
+    newCoffees.forEach(function (coffee) {
+        coffees.push(coffee)
+    })
+}
 
 let tbody = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
@@ -275,7 +287,7 @@ function screenTop() {          /*scroll function*/
 }
 
 let buttonTop = document.getElementById("topBtn")
-buttonTop.addEventListener('click',screenTop);
+buttonTop.addEventListener('click', screenTop);
 
 function scrollFunction() {
     if (document.body.scrollTop > 220 || document.documentElement.scrollTop > 220) {
@@ -285,13 +297,24 @@ function scrollFunction() {
     }
 }
 
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+    scrollFunction();
+}
 
+function removeStorage() {
+    let savCoffes, i;
+    savCoffes = JSON.parse(localStorage.getItem("savedCoffees"));
+    if(savCoffes !== null){                                     /*checks if local is empty before it tries to pull .length from null*/
+        for (i = 0; i < savCoffes.length; i++) {
+        coffees.pop();
+        }
+    }
 
-function clear(){
-    localStorage.clear();
+    localStorage.removeItem('savedCoffees');
     updateCoffees();
 }
+
+
 /*
 
 function image(){
